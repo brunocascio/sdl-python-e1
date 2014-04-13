@@ -10,10 +10,7 @@ class Entrega(object):
 
 	def __init__(self):
 		fo = open("datos", "rb")
-		#self.dictData = {'idioma': ['hola','como','andas'], 'silabas': ['ma ña na', 'so lea do']}
 		self.dictData = pickle.load(fo)
-		#fo = open("datos", "wb")
-		#pickle.dump(self.dictData,fo)
 		fo.close()
 
 
