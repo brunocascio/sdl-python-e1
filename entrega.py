@@ -62,8 +62,11 @@ class Entrega(object):
 		    Args:
 		        name: El nombre de la categoría
 		    Returns: None"""
-		self.dictData.pop(name,None)
-		self._save()
+		try:
+			self.dictData.pop(name,None)
+			self._save()
+		except KeyError:
+			print ("La categoría ingresada no existe.")
 
 
 	def renameCategory(self, name, newName):
@@ -72,8 +75,11 @@ class Entrega(object):
 		        name: El nombre de la categoría a renombrar
 		        newName: El nuevo nombre de la categoría
 		    Returns: None"""
-		self.dictData[newName] = self.dictData.pop(name)
-		self._save()
+		try:
+			self.dictData[newName] = self.dictData.pop(name)
+			self._save()
+		except KeyError:
+			print ("La categoría ingresada no existe.")
 
 
 
@@ -92,14 +98,20 @@ class Entrega(object):
 
 	def wordsByCategoryName(self, category):
 		"""Muestra todas las palabras de una categoria"""
-		print(self.dictData[category])
+		try:
+			print(self.dictData[category])
+		except KeyError:
+			print ("La categoría ingresada no existe.")
 
 
 	def wordByCategoryName(self, category):
 		"""Muestra una palabra aleatoria de una categoria"""
-		l = self.dictData[category]
-		index = random.randint(1, len(l)) -1
-		print(l[index])
+		try:
+			l = self.dictData[category]
+			index = random.randint(1, len(l)) -1
+			print(l[index])
+		except KeyError:
+			print ("La categoría ingresada no existe.")			
 
 
 	def addWord(self,category,word):
@@ -108,8 +120,11 @@ class Entrega(object):
 		        category: Categoria a la cual se le asignará la palabra
 		        word: Palabra a agregar
 		    Returns: None"""
-		self.dictData[category].append(word);
-		self._save()
+		try:
+			self.dictData[category].append(word);
+			self._save()
+		except KeyError:
+			print ("La categoría ingresada no existe.")
 
 
 	def removeWord(self,category,word):
@@ -118,10 +133,12 @@ class Entrega(object):
 		        category: Categoria de la palabra
 		        word: Palabra a eliminar
 		    Returns: None"""
-		list = self.dictData[category]
-		list.pop(list.index(word));
-		self._save()
-
+		try:
+			list = self.dictData[category]
+			list.pop(list.index(word));
+			self._save()
+		except KeyError:
+			print ("La categoría ingresada no existe.")
 
 	def renameWord(self,category,word,newWord):
 		"""Renombra una palabra de una determinada categoria
@@ -130,10 +147,12 @@ class Entrega(object):
 		        word: Palabra a modificar
 		        newWord: NuevaPalabra
 		    Returns: None"""
-		list = self.dictData[category]
-		list[list.index(word)] = newWord;
-		self._save()
-
+		try:
+			list = self.dictData[category]
+			list[list.index(word)] = newWord;
+			self._save()
+		except KeyError:
+			print ("La categoría ingresada no existe.")
 
 
 	#################### MAIN ######################
