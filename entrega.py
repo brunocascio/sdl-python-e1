@@ -1,15 +1,10 @@
-#/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-#importaciones
-import pickle
 import random
 
-
+import pickle
 
 class Entrega(object):	
-	"""Clase Entrega"""
-
+	
 	def __init__(self):
 		try:
 			fo = open("datos", "rb")
@@ -17,17 +12,17 @@ class Entrega(object):
 		except IOError:
 			fo = open("datos", "wb+")
 			self.dictData = {}
-			self.dictData = pickle.dump(self.dictData, fo)
+		except EOFError:
+			self.dictData = {}
 		fo.close()
 
-
-	def __save(self):
+	def _save(self):
 		"""Persiste la información"""
 		fo = open("datos", "wb")
 		pickle.dump(self.dictData,fo)
 		fo.close()
 
-
+	#Pruebas:
 	def all(self):
 		"""Muestra todas las categorias ordenadas alfabeticamente"""
 		print()
@@ -42,8 +37,6 @@ class Entrega(object):
 		print()
 		fo.close()
 
-	def __str__(self):
-		self.all
 
 
 	"""
@@ -61,7 +54,7 @@ class Entrega(object):
 		        name: El nombre de la categoría
 		    Returns: None"""
 		self.dictData[name] = []
-		self.__save()
+		self._save()
 
 
 	def removeCategory(self, name):
@@ -70,7 +63,7 @@ class Entrega(object):
 		        name: El nombre de la categoría
 		    Returns: None"""
 		self.dictData.pop(name,None)
-		self.__save()
+		self._save()
 
 
 	def renameCategory(self, name, newName):
@@ -80,7 +73,7 @@ class Entrega(object):
 		        newName: El nuevo nombre de la categoría
 		    Returns: None"""
 		self.dictData[newName] = self.dictData.pop(name)
-		self.__save()
+		self._save()
 
 
 
@@ -116,7 +109,7 @@ class Entrega(object):
 		        word: Palabra a agregar
 		    Returns: None"""
 		self.dictData[category].append(word);
-		self.__save()
+		self._save()
 
 
 	def removeWord(self,category,word):
@@ -127,7 +120,7 @@ class Entrega(object):
 		    Returns: None"""
 		list = self.dictData[category]
 		list.pop(list.index(word));
-		self.__save()
+		self._save()
 
 
 	def renameWord(self,category,word,newWord):
@@ -139,4 +132,13 @@ class Entrega(object):
 		    Returns: None"""
 		list = self.dictData[category]
 		list[list.index(word)] = newWord;
-		self.__save()
+		self._save()
+
+
+
+	#################### MAIN ######################
+
+
+#a = Entrega()
+#a.all()
+#print()
