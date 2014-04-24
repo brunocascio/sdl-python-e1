@@ -1,18 +1,20 @@
 # -*- coding: utf-8 -*-
-
-#importaciones
-import pickle
 import random
 
+import pickle
 
 class Entrega(object):	
-
-
+	
 	def __init__(self):
-		fo = open("datos", "rb")
-		self.dictData = pickle.load(fo)
+		try:
+			fo = open("datos", "rb")
+			self.dictData = pickle.load(fo)
+		except IOError:
+			fo = open("datos", "wb+")
+			self.dictData = {}
+		except EOFError:
+			self.dictData = {}
 		fo.close()
-
 
 	def _save(self):
 		"""Persiste la información"""
@@ -20,7 +22,7 @@ class Entrega(object):
 		pickle.dump(self.dictData,fo)
 		fo.close()
 
-
+	#Pruebas:
 	def all(self):
 		"""Muestra todas las categorias ordenadas alfabeticamente"""
 		print()
@@ -137,6 +139,6 @@ class Entrega(object):
 	#################### MAIN ######################
 
 
-a = Entrega()
-a.all()
-print()
+#a = Entrega()
+#a.all()
+#print()
