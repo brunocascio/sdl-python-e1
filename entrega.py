@@ -27,8 +27,8 @@ class Entrega(object):
 	"""
 
 	def categories(self):
-		"""Muestra todas las categorias ordenadas alfabeticamente"""
-		print(sorted(self.dictData.keys()))
+		"""Retorna una lista con todas las categorias ordenadas alfabeticamente"""
+		return (sorted(self.dictData.keys()))
 
 	
 	def addCategory(self, name):
@@ -74,27 +74,32 @@ class Entrega(object):
 
 	def words(self):
 		"""
-			Muestra todas las palabras agrupadas por categorias
+			Retorna todas las palabras agrupadas por categorias
 			Tanto las categorias como las palabras se encuentran ordenandas alfabeticamente
+			Returns: diccionario.
 		"""
-		for (c,l) in sorted(self.dictData.items()):
-			print(c,sorted(l))
+		return {c: sorted(l) for (c,l) in sorted(self.dictData.items())}
 
 
 	def wordsByCategoryName(self, category):
-		"""Muestra todas las palabras de una categoria"""
+		"""
+			Muestra todas las palabras de una categoria
+			Returns: list.
+		"""
 		try:
-			print(self.dictData[category])
+			return (self.dictData[category])
 		except KeyError:
 			print ("La categoría ingresada no existe.")
 
 
 	def wordByCategoryName(self, category):
-		"""Muestra una palabra aleatoria de una categoria"""
+		"""
+			Retorna una palabra aleatoria de una categoria
+		"""
 		try:
 			l = self.dictData[category]
 			index = random.randint(1, len(l)) -1
-			print(l[index])
+			return (l[index])
 		except KeyError:
 			print ("La categoría ingresada no existe.")			
 
