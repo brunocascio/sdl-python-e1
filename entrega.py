@@ -145,10 +145,4 @@ class Entrega(object):
 		except ValueError:
 			print ("La palabra buscada no existe en la categoría " + category + ".")
 
-
-	#################### MAIN ######################
-
-
-#a = Entrega()
-#a.all()
-#print()
+		
