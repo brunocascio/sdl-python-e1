@@ -53,9 +53,12 @@ class Entrega(object):
 		    Args:
 		        name: El nombre de la categoría
 		    Returns: None"""
-		self.dictData[name] = []
-		self._save()
-
+		if (name in self.dictData):
+			print ("La categoría ingresada ya existe.")
+		else:
+			self.dictData[name] = []
+			self._save()
+			
 
 	def removeCategory(self, name):
 		"""Remueve una nueva categoria
