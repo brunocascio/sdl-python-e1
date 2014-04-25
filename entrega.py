@@ -34,7 +34,6 @@ class Entrega(object):
 		print()
 		fo = open("datos", "rb")
 		print(pickle.load(fo))
-		print()
 		fo.close()
 
 
@@ -58,7 +57,6 @@ class Entrega(object):
 		else:
 			self.dictData[name] = []
 			self._save()
-			
 
 	def removeCategory(self, name):
 		"""Remueve una nueva categoria
@@ -159,11 +157,3 @@ class Entrega(object):
 			self._save()
 		except KeyError:
 			print ("La categoría ingresada no existe.")
-
-
-	#################### MAIN ######################
-
-
-#a = Entrega()
-#a.all()
-#print()
