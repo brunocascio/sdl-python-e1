@@ -56,7 +56,7 @@ class Entrega(object):
 			print ("La categoría ingresada ya existe.")
 		else:
 			self.dictData[name] = []
-			self._save()
+			self.__save()
 
 	def removeCategory(self, name):
 		"""Remueve una nueva categoria
@@ -65,7 +65,7 @@ class Entrega(object):
 		    Returns: None"""
 		try:
 			self.dictData.pop(name,None)
-			self._save()
+			self.__save()
 		except KeyError:
 			print ("La categoría ingresada no existe.")
 
@@ -78,7 +78,7 @@ class Entrega(object):
 		    Returns: None"""
 		try:
 			self.dictData[newName] = self.dictData.pop(name)
-			self._save()
+			self.__save()
 		except KeyError:
 			print ("La categoría ingresada no existe.")
 
@@ -123,7 +123,7 @@ class Entrega(object):
 		    Returns: None"""
 		try:
 			self.dictData[category].append(word)
-			self._save()
+			self.__save()
 		except KeyError:
 			print ("La categoría ingresada no existe.")
 
@@ -137,7 +137,7 @@ class Entrega(object):
 		try:
 			list = self.dictData[category]
 			list.pop(list.index(word))
-			self._save()
+			self.__save()
 		except KeyError:
 			print ("La categoría ingresada no existe.")
 		except ValueError:
@@ -154,7 +154,7 @@ class Entrega(object):
 		try:
 			list = self.dictData[category]
 			list[list.index(word)] = newWord
-			self._save()
+			self.__save()
 		except KeyError:
 			print ("La categoría ingresada no existe.")
 		except ValueError:
