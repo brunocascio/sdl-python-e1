@@ -49,7 +49,7 @@ class Entrega(object):
 		        name: El nombre de la categoría
 		    Returns: None"""
 		try:
-			self.dictData.pop(name,None)
+			self.dictData.pop(name)
 			self.__save()
 		except KeyError:
 			print ("La categoría ingresada no existe.")
@@ -145,4 +145,3 @@ class Entrega(object):
 		except ValueError:
 			print ("La palabra buscada no existe en la categoría " + category + ".")
 
-		
