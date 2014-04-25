@@ -16,7 +16,7 @@ class Entrega(object):
 			self.dictData = {}
 		fo.close()
 
-	def _save(self):
+	def __save(self):
 		"""Persiste la información"""
 		fo = open("datos", "wb")
 		pickle.dump(self.dictData,fo)
