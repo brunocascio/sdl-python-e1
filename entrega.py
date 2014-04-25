@@ -41,7 +41,6 @@ class Entrega(object):
 		else:
 			self.dictData[name] = []
 			self.__save()
-			
 
 	def removeCategory(self, name):
 		"""Remueve una nueva categoria
@@ -147,4 +146,3 @@ class Entrega(object):
 			print ("La categoría ingresada no existe.")
 		except ValueError:
 			print ("La palabra buscada no existe en la categoría " + category + ".")
-
