@@ -16,7 +16,7 @@ class Entrega(object):
 			self.dictData = {}
 		fo.close()
 
-	def _save(self):
+	def __save(self):
 		"""Persiste la información"""
 		fo = open("datos", "wb")
 		pickle.dump(self.dictData,fo)
@@ -122,7 +122,7 @@ class Entrega(object):
 		        word: Palabra a agregar
 		    Returns: None"""
 		try:
-			self.dictData[category].append(word);
+			self.dictData[category].append(word)
 			self._save()
 		except KeyError:
 			print ("La categoría ingresada no existe.")
@@ -141,9 +141,9 @@ class Entrega(object):
 		except KeyError:
 			print ("La categoría ingresada no existe.")
 		except ValueError:
-			print ("La palabra ingresada no existe en la categoría" + category)
+			print ("La palabra ingresada no existe en la categoría " + category + ".")
 		
-		
+
 	def renameWord(self,category,word,newWord):
 		"""Renombra una palabra de una determinada categoria
 		    Args:
@@ -153,7 +153,17 @@ class Entrega(object):
 		    Returns: None"""
 		try:
 			list = self.dictData[category]
-			list[list.index(word)] = newWord;
+			list[list.index(word)] = newWord
 			self._save()
 		except KeyError:
 			print ("La categoría ingresada no existe.")
+		except ValueError:
+			print ("La palabra buscada no existe en la categoría " + category + ".")
+
+
+	#################### MAIN ######################
+
+
+#a = Entrega()
+#a.all()
+#print()
