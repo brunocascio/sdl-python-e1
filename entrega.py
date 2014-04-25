@@ -107,8 +107,11 @@ class Entrega(object):
 		        word: Palabra a agregar
 		    Returns: None"""
 		try:
-			self.dictData[category].append(word)
-			self.__save()
+			if not (word in self.dictData[category]):
+				self.dictData[category].append(word)
+				self.__save()
+			else:
+				print ("La palabra ingresada ya se encuentra en la categoría " + category + ".")
 		except KeyError:
 			print ("La categoría ingresada no existe.")
 
