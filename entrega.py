@@ -22,22 +22,6 @@ class Entrega(object):
 		pickle.dump(self.dictData,fo)
 		fo.close()
 
-	#Pruebas:
-	def all(self):
-		"""Muestra todas las categorias ordenadas alfabeticamente"""
-		print()
-		print('#### Contenido de la estructura ####')
-		print()
-		print(self.dictData)
-		print()
-		print('#### Contenido del archivo ####')
-		print()
-		fo = open("datos", "rb")
-		print(pickle.load(fo))
-		fo.close()
-
-
-
 	"""
 		Operaciones con Categorias
 	"""
@@ -160,10 +144,4 @@ class Entrega(object):
 		except ValueError:
 			print ("La palabra buscada no existe en la categoría " + category + ".")
 
-
-	#################### MAIN ######################
-
-
-#a = Entrega()
-#a.all()
-#print()
+		
