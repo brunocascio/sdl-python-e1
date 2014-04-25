@@ -138,11 +138,14 @@ class Entrega(object):
 		    Returns: None"""
 		try:
 			list = self.dictData[category]
-			list.pop(list.index(word));
+			list.pop(list.index(word))
 			self._save()
 		except KeyError:
 			print ("La categoría ingresada no existe.")
-
+		except ValueError:
+			print ("La palabra ingresada no existe en la categoría" + category)
+		
+		
 	def renameWord(self,category,word,newWord):
 		"""Renombra una palabra de una determinada categoria
 		    Args:
