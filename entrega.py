@@ -5,12 +5,13 @@ import pickle
 
 class Entrega(object):	
 	
-	def __init__(self):
+	def __init__(self, path="datos"):
 		try:
-			fo = open("datos", "rb")
+			self.path = path
+			fo = open(self.path, "rb")
 			self.dictData = pickle.load(fo)
 		except IOError:
-			fo = open("datos", "wb+")
+			fo = open(self.path, "wb+")
 			self.dictData = {}
 		except EOFError:
 			self.dictData = {}
@@ -18,7 +19,7 @@ class Entrega(object):
 
 	def __save(self):
 		"""Persiste la información"""
-		fo = open("datos", "wb")
+		fo = open(self.path, "wb")
 		pickle.dump(self.dictData,fo)
 		fo.close()
 
