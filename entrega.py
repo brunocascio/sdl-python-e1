@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-import random
-
-import pickle
+import random, pickle
 
 class Entrega(object):	
 	
