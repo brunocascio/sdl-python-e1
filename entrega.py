@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+
+# Se importan dependencias
 import random, pickle
 
 class Entrega(object):	
