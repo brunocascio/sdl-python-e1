@@ -1,6 +1,6 @@
 import entrega
 
-e = entrega.Entrega("datos")
+e = entrega.Entrega("datos1")
 
 print("====================================")
 print("=========== Bienvenido =============")
@@ -17,7 +17,8 @@ print ("4. 	Eliminar Categoría")
 print()
 print("=========== Palabras ===========")
 print()
-print ("5.  Listar Palabras")
+print ("5.  Obtener lista de Anagramas.")
+#print ("5.  Listar Palabras")
 print ("6.  Listar Palabras de una Categoría")
 print ("7.  Obtener una Palabra de una Categoría")
 print ("8.  Agregar Palabra a una Categoría")
@@ -27,6 +28,7 @@ print ("10. Eliminar Palabra de una Categoría")
 print ("11. pruebas.")
 print ("12. Agregar Anagrama")
 print ("13. Agregar nivel")
+print ("14. Descripción.")
 
 print()
 print ("0. 	Salir")
@@ -48,8 +50,13 @@ while i != 0:
 	elif i == 4:
 		cat = input("Nombre de la categoría a eliminar: ")
 		e.removeCategory(cat)
-	elif i == 5:
-		print (e.words())
+#	elif i == 5:
+#		print (e.words())
+	elif i ==5:
+		cat = input("Nombre de la categoría: ")
+		dif = int (input ("Nivel de dificultad: "))
+		pal = input ("Nombre de la palabra: ")
+		print (e.anagrams(cat, pal, dif))
 	elif i == 6:
 		cat = input("Nombre de la categoría: ")
 		dif = int (input ("dificultad: "))
@@ -91,6 +98,11 @@ while i != 0:
 		cat = input ("Ingrese categoría: ")
 		dif = int (input("dificultad: "))
 		e.addLevel (dif, cat)
+	elif i == 14:
+		cat = input("Nombre de la categoría: ")
+		dif = int (input ("Nivel de dificultad: "))
+		pal = input ("Nombre de la palabra: ")
+		print (e.description(cat, pal, dif))
 	elif i == 0:
 		pass
 	else:

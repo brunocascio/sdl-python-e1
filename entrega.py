@@ -5,7 +5,7 @@ import random, pickle
 
 class Entrega(object):	
 	
-	def __init__(self, path="datos"):
+	def __init__(self, path="datos1"):
 		try:
 			self.path = path
 			fo = open(self.path, "rb")
@@ -56,7 +56,8 @@ class Entrega(object):
 				category: categoría a la cual se agrega nivel
 		"""
 		try:
-			self.dictData[category] = dictLevel
+			"""Obtengo el diccionario de determinada categoría"""
+			dictLevel =self.dictData[category]
 			if (difficulty in dictLevel):
 				print ("El nivel ya existe en la categoría " + category + ".")
 			else:
@@ -211,3 +212,30 @@ class Entrega(object):
 			print ("La categoría ingresada no existe.")
 		except ValueError:
 			print ("La palabra buscada no existe en la categoría " + category + ".")
+
+
+	def anagrams (self, category, name, difficulty):
+		"""
+			Retorna una lista de anagramas para determinada palabra.
+			Args:
+				category: nombre de categoría donde se encuentra palabra.
+				name: nombre de la palabra de la cual se obtiene lista.
+				difficulty: nivel de dificultad
+			Returns:
+				Retorna lista de strings.
+		"""
+		try:
+			return (self.dictData[category][difficulty][name]["res"])
+		except KeyError:
+			print ("Tratar error de cada clave (category, difficulty y name) por separado.")
+
+
+	def description (self, category, name, difficulty):
+		"""
+			Retorna la descripción de una palabra en determinada categoría de determinado nivel de dificultad.
+			Returns: string.
+		"""
+		try:
+			return (self.dictData[category][difficulty][name]["descr"])
+		except KeyError:
+			print ("Tratar cada una de los excepts de cada key.")
