@@ -7,7 +7,7 @@ print("=========== Bienvenido =============")
 print("====================================")
 
 print()
-print("=========== Categorias ===========")
+print("=========== CATEGORÍAS ===========")
 print()
 print ("1. 	Listar Categorías")
 print ("2. 	Agregar Categoría")
@@ -15,7 +15,7 @@ print ("3. 	Modificar Categoría")
 print ("4. 	Eliminar Categoría")
 
 print()
-print("=========== Palabras ===========")
+print("=========== NOMBRES ===========")
 print()
 print ("5.  Obtener lista de Anagramas.")
 #print ("5.  Listar Palabras")
@@ -29,6 +29,12 @@ print ("11. pruebas.")
 print ("12. Agregar Anagrama")
 print ("13. Agregar nivel")
 print ("14. Descripción.")
+print ("15. Modificar un anagrama.")
+print ("16. Eliminar un anagrama.")
+
+print ()
+print ("================ CONFIGURACIONES=============")
+print ()
 
 print()
 print ("0. 	Salir")
@@ -77,7 +83,9 @@ while i != 0:
 		ana = input ("Anagramas de la Palabra: ")
 		l = []
 		while (ana != "0"):
-			l.append(ana)
+			#Verifico unicidad dentro de la lista:
+			if not (ana in l):
+				l.append(ana)
 			ana = input ("Anagramas de la Palabra: ")
 		desc = input ("Agregue una breve descripción del elemento a ingresar: ")
 		e.addInfo (cat, name, dif, l, desc)
@@ -103,6 +111,19 @@ while i != 0:
 		dif = int (input ("Nivel de dificultad: "))
 		pal = input ("Nombre de la palabra: ")
 		print (e.description(cat, pal, dif))
+	elif i == 15:
+		cat = input("Nombre de la categoría: ")
+		dif = int (input ("Nivel de dificultad: "))
+		pal = input ("Nombre de la palabra del anagrama a modificar: ")
+		ana = input ("Nombre del anagrama a modificar: ")
+		newAna = input ("Nombre nuevo: ")
+		renameAnagram (self, cat, pal, ana, dif, newAna)
+	elif i == 16:
+		cat = input("Nombre de la categoría: ")
+		dif = int (input ("Nivel de dificultad: "))
+		pal = input ("Nombre de la palabra del anagrama a eliminar: ")
+		ana = input ("Nombre del anagrama a eliminar: ")
+		removeAnagram (self, cat, pal, ana, dif)
 	elif i == 0:
 		pass
 	else:
