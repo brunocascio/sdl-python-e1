@@ -5,18 +5,31 @@ import random, pickle
 
 class Entrega(object):	
 	
-	def __init__(self, path="datos1"):
+	def __init__(self, path="datos"):
 		try:
 			self.path = path
 			fo = open(self.path, "rb")
 			self.dictData = pickle.load(fo)
-		except IOError:
+		except (IOError, EOFError):
 			"""No existe el archivo, lo creo"""
 			fo = open(self.path, "wb+")
-			self.dictData = {"datos":{}, "config":{}}
-		except EOFError:
-			self.dictData = {}
+			self.__inicializarDatos()
 		fo.close()
+
+
+	def __inicializarDatos (self):
+		config = {  1:{"coord":
+						{"camara":0.28068, "personaje":-23.56558}},
+					2:{"coord":
+						{"camara":73.81065, "personaje":73.52997}},
+					3:{"coord":
+						{"camara": 130.39062, "personaje": 130.10994}},
+					4:{"coord":
+						{"camara": 192.06549, "personaje": 192.37422}},
+					5:{"coord":
+						{"camara": 258.99521, "personaje": 259.30124}}}
+
+		self.dictData = {"datos":{}, "config": config}
 
 
 	def __save(self):
@@ -154,7 +167,7 @@ class Entrega(object):
 		    Returns: None
 		"""
 		try:
-			self.dictData["datos"][category][level][newName] = self.["datos"]dictData[category][level].pop(name)
+			self.dictData["datos"][category][level][newName] = self.dictData["datos"][category][level].pop(name)
 			self.__save()
 		except KeyError:
 			print ("La categoría ingresada no existe.")
@@ -303,33 +316,16 @@ class Entrega(object):
 		OPERACIONES CON CONFIGURACIÓN.
 	"""
 
-	#Debe agregarse la clave "camara" en algún lado al diccionario.
-	def addCameraPos (self, level, pos):
+	def getCoord (self, level):
 		"""
-			Agrega una posición a la cámara en un determinado nivel en la sección de configuraciones.
-			Args:
-				level: nivel.
-				pos: tupla con posición donde aparecerá la cámara.
+			Devuelve las coordenadas de determinado nivel de cámara y personaje.
+			Returns: dict.
 		"""
-		try:
-			self.dictData["config"]["camara"][level] = pos
+		try: 
+			return (self.dictData["config"][level]["coord"])
 		except KeyError:
-			print ("No se encuentra el nivel.")
+			print ("Nivel ingresado no válido.")
+
+
+
 	
-
-	#Puede recibir las coordenadas, en tal caso habria que modificarlo al minimo.
-	def modifyCamera (self, level, pos):
-		"""
-			Modifica la posicion de una camara en determinado nivel
-			Args:
-				level: nivel de camara.
-				pos: nueva posicion.
-		"""
-		try:
-			#Elimino la vieja posicion
-			self.dictData["config"]["camara"].pop(level)
-			#Seteo la nueva posicion.
-			self.dictData["config"]["camara"][level] = pos
-		except KeyError>
-		print ("El nivel ingresado no existe.")
-
