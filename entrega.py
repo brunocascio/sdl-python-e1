@@ -21,13 +21,13 @@ class Entrega(object):
 		config = {  1:{"coord":
 						{"camara":0.28068, "personaje":-23.56558}},
 					2:{"coord":
-						{"camara":73.81065, "personaje":73.52997}},
+						{"camara":73.81065, "personaje":49.96439}},
 					3:{"coord":
-						{"camara": 130.39062, "personaje": 130.10994}},
+						{"camara": 130.39062, "personaje": 106.54436}},
 					4:{"coord":
-						{"camara": 192.06549, "personaje": 192.37422}},
+						{"camara": 192.06549, "personaje": 168.21923}},
 					5:{"coord":
-						{"camara": 258.99521, "personaje": 259.30124}}}
+						{"camara": 258.99521, "personaje": 235.14895}}}
 
 		self.dictData = {"datos":{}, "config": config}
 
