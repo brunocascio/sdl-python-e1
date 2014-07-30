@@ -1,6 +1,6 @@
 import entrega
 
-e = entrega.Entrega("datos1")
+e = entrega.Entrega("datos")
 
 print("====================================")
 print("=========== Bienvenido =============")
@@ -23,7 +23,7 @@ print ("6.  Listar Palabras de una Categoría")
 print ("7.  Obtener una Palabra de una Categoría")
 print ("8.  Agregar Palabra a una Categoría")
 #print ("9.  Modificar Palabra de una Categoría")
-print ("9.  Agregar información al archivo")
+print ("9.  Cargar archivo")
 print ("10. Eliminar Palabra de una Categoría")
 print ("11. pruebas.")
 print ("12. Agregar Anagrama")
@@ -99,8 +99,8 @@ while i != 0:
 	elif i == 12:
 		cat = input ("Ingrese categoría: ")
 		dif = int (input("dificultad: "))
-		name = input ("Ingrese nombre al cual agregar Anagrama: ")
 		ana = input ("Ingrese Anagrama: ")
+		name = input ("Ingrese el resultado del Anagrama: ")
 		e.addAnagram(cat,name, ana, dif)
 	elif i == 13:
 		cat = input ("Ingrese categoría: ")
@@ -109,7 +109,7 @@ while i != 0:
 	elif i == 14:
 		cat = input("Nombre de la categoría: ")
 		dif = int (input ("Nivel de dificultad: "))
-		pal = input ("Nombre de la palabra: ")
+		pal = input ("Anagrama: ")
 		print (e.description(cat, pal, dif))
 	elif i == 15:
 		cat = input("Nombre de la categoría: ")
