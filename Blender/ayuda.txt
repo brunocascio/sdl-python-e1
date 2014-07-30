@@ -1,1 +1,4 @@
 Primera linea de ayuda.
+Segunda línea de ayuda.
+Tercera línea de ayuda.
+Cuarta línea de la ayuda.
