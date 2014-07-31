@@ -1,2 +1,3 @@
-No existía la imagen chicken.png ( $NUESTRO_PROYECTO/Dave/Desktop/Desktop/monetext/mob/chicken.png )
-No existía la imagen 1.png       ( $NUESTRO_PROYECTO/home/waterlava/lava/1.png )
+- No existía la imagen chicken.png ( $NUESTRO_PROYECTO/Dave/Desktop/Desktop/monetext/mob/chicken.png )
+- No existía la imagen 1.png       ( $NUESTRO_PROYECTO/home/waterlava/lava/1.png )
+- No se pueden asignar multiples sensores, a 2 controladores de tipo módulo independientemente uno del otro. Funciona si se hace directamente desde la UI.

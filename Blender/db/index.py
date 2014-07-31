@@ -109,7 +109,7 @@ while i != 0:
 	elif i == 14:
 		cat = input("Nombre de la categoría: ")
 		dif = int (input ("Nivel de dificultad: "))
-		pal = input ("Anagrama: ")
+		pal = input ("Palabra: ")
 		print (e.description(cat, pal, dif))
 	elif i == 15:
 		cat = input("Nombre de la categoría: ")

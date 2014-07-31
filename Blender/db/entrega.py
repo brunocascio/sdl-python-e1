@@ -211,14 +211,14 @@ class Entrega ():
 
 
 	
-	def addAnagram(self,category,name, ana, level):
+	def addAnagram(self,category,name, ana, difficulty):
 		"""
 		Agrega un anagrama a una determinada categoria en una determinada dificultad de name:
 		    Args:
 		        category: Categoria a la cual se le asignará la palabra
 		        ana: Palabra a agregar
 		        name: palabra a la cual se agrega el anagrama
-		        level : nivel en el cual se agrega palabra
+		        difficulty : nivel en el cual se agrega palabra
 		    Returns: None
 		"""
 		try:
