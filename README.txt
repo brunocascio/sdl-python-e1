@@ -1,7 +1,9 @@
 Entrega.py
 =============
 
-Script para la generación de datos del juego
+=> Python script para la generación de datos del juego.
+
+
 
 
 - Operaciones -
@@ -9,6 +11,10 @@ Script para la generación de datos del juego
 
 e = Entrega()
 	- Constructor
+
+- e.getWord(level)
+	- Retorna una palabra aleatoria, de una categoría aletoria de un nivel dado (1..5).
+	- Una excepción ocurre si el nivel se encuentra fuera del rango.
 
 - e.addWord(word, category, level)
 	- Almacena una palabra y su descripción de ayuda en una categoría de un determinado nivel (1..5).
