@@ -13,8 +13,10 @@ e = Entrega()
 	- Constructor
 
 - e.getWord(level)
-	- Retorna una palabra aleatoria, de una categoría aletoria de un nivel dado (1..5).
+	- Retorna una estructura con la categoria de la palabra, la palabra en si y su descripción, de forma aleatoria, de un nivel dado (1..5).
+		Ejemplo -> {category:'peces',value:'tiburon',descripcion:"es carnívoro"}
 	- Una excepción ocurre si el nivel se encuentra fuera del rango.
+	
 
 - e.addWord(word, category, level)
 	- Almacena una palabra y su descripción de ayuda en una categoría de un determinado nivel (1..5).
