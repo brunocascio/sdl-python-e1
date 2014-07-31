@@ -1,46 +1,35 @@
-Entrega
+Entrega.py
 =============
 
-Se debe importar el paquete "entrega1" el módulo "entrega" ( "from entrega1 import entrega" )
-
-Luego de la importación debe instanciarse la clase Entrega.
-
-e = entrega.Entrega()
-
-a partir de este momento se pueden acceder a los metodos del objeto mismo.
-
-Ellas son:
+Script para la generación de datos del juego
 
 
-- Operaciones con categorías -
+- Operaciones -
 -------------------------------
 
-e.categories() # Retorna todas las categorías ordenadas alfabeticamente.
+e = Entrega()
+	- Constructor
 
-e.addCategory(name) # Agrega una nueva categoría de nombre name.
+- e.addWord(word, category, level)
+	- Almacena una palabra y su descripción de ayuda en una categoría de un determinado nivel (1..5).
+	- Si la categoría no existe en ese nivel, la crea.
+	- Una excepción ocurre si level no se encuentra en el rango.
 
-e.removeCategory(name) # Remueve una categoría de nombre name.
+- e.updateWord(wordOld, word, category, level)
+	- Actualiza una palabra y su descripción de ayuda en una categoría de un determinado nivel (1..5).
+	- Una excepción ocurre si la categoría ó la palabra a actualizar no existe ó bien el nivel no se encuentra en el rango.
 
-e.renameCategory(oldName,newName) # Renombra una categoría de nombre oldName por newName.
+- e.removeWord(word,category,level)
+	- Remueve una palabra junto a su descripción de una categoría en un determinado nivel (1..5).
+	- Una excepción occure, si la categoría no existe dentro del nivel, o bien el nivel no se encuentra en el rango.
 
+- e.showFullData()
+	- Muestra el estado actual de los datos dentro del archivo.
 
-- Operaciones con palabras -
--------------------------------
+- e.renameCategory(categoryOld, category, level)
+	- Renombra una categoría en un determinado nivel (1..5)
+	- Una excepción ocurre si la categoría a reemplazar no existe o bien el nivel está fuera del rango.
 
-e.words() # Retorna todas las palabras agrupadas por categorías. Tanto las categorías como las palabras se encuentran ordenandas alfabeticamente.
-
-e.wordsByCategoryName(category) # Retorna todas las palabras de una categoría category.
-
-e.wordByCategoryName(category) # Retorna una palabra aleatoria, de la categoría category.
-
-e.addWord(category,word) # Agrega una palabra word, a una categoría category.
-
-e.removeWord(category,word) # Remueve la palabra word, de una categoría category.
-
-e.renameWord(category,oldWord,newWord) # Renombra una palabra oldWord por newWord de una categoría category.
-
-
-
-
-
-
+- e.removeCategory(category, level)
+	- Remueve una categoría junto a su información asociada de un determinado nivel (1..5)
+	- Una excepción ocurre si la categoría no existe en el nivel, o bien el nivel se encuentra fuera del rango.
