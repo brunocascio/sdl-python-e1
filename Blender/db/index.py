@@ -3,138 +3,73 @@ import pprint
 
 e = entrega.Entrega("datos")
 
+def showMenu ():
+	print()
+	print ("1. Agregar palabra.")
+	print ("2. Modificar palabra.")
+	print ("3. Eliminar palabra. ")
+	print ("4. Obtener diccionario palabra. (?)")
+	print ("5. Renombrar categoría.")
+	print ("6. Remover categoría.")
+	print ("7. Mostrar todos los datos.")
+	print ("8. Crear niveles.")
+	#print ("8. Mostrar estado de juego.")
+	print()
+	print ("0. 	Salir")
+	print()
+
+
 print("====================================")
 print("=========== Bienvenido =============")
 print("====================================")
-
-print()
-print("=========== CATEGORÍAS ===========")
-print()
-print ("1. 	Listar Categorías")
-print ("2. 	Agregar Categoría")
-print ("3. 	Modificar Categoría")
-print ("4. 	Eliminar Categoría")
-
-print()
-print("=========== NOMBRES ===========")
-print()
-print ("5.  Obtener lista de Anagramas.")
-#print ("5.  Listar Palabras")
-print ("6.  Listar Palabras de una Categoría")
-print ("7.  Obtener una Palabra de una Categoría")
-print ("8.  Agregar Palabra a una Categoría")
-#print ("9.  Modificar Palabra de una Categoría")
-print ("9.  Cargar archivo")
-print ("10. Eliminar Palabra de una Categoría")
-print ("11. pruebas.")
-print ("12. Agregar Anagrama")
-print ("13. Agregar nivel")
-print ("14. Descripción.")
-print ("15. Modificar un anagrama.")
-print ("16. Eliminar un anagrama.")
-
-print ()
-print ("================ CONFIGURACIONES=============")
-print ()
-
-print()
-print ("0. 	Salir")
-print()
-
+showMenu()
 i = -1
 
 while i != 0:
+	
+	#showMenu ()
+
 	i = int( input ("Ingrese una opción: ") )
 	if i == 1:
-		print(e.categories())
+		pal = input ("Ingrese una palabra: ")
+		cat = input ("Ingrese una categoría: ")
+		desc = input ("Ingrese una descripción de la palabra: ")
+		level = int (input ("Ingrese el nivel: "))
+		e.addWord (level, cat, pal, desc)
 	elif i == 2:
 		cat = input("Nombre de la categoría: ")
-		e.addCategory(cat)
+		name = input ("Ingrese el nombre que quiere modificar: ")
+		rename = input ("Ingrese nuevo nombre: ")
+		level = int (input ("Ingrese nivel: "))
+		e.renameWord (cat, name, rename, level)
 	elif i == 3:
-		cat = input("Nombre de la categoría a modificar: ")
-		newCat = input("Nombre de la categoría nueva: ")
-		e.renameCategory(cat,newCat)
+		cat = input("Ingrese categoría: ")
+		name = input ("Ingrese nombre que desea eliminar: ")
+		level = int (input ("Ingrese nivel: "))
+		e.removeWord (cat, name, level)
 	elif i == 4:
-		cat = input("Nombre de la categoría a eliminar: ")
-		e.removeCategory(cat)
-#	elif i == 5:
-#		print (e.words())
+		level = int (input ("Ingrese nivel: "))
+		print (e.getWord (level))
 	elif i ==5:
-		cat = input("Nombre de la categoría: ")
-		dif = int (input ("Nivel de dificultad: "))
-		pal = input ("Nombre de la palabra: ")
-		print (e.anagrams(cat, pal, dif))
+		cat = input("Nombre de la categoría que desea modificar: ")
+		newCat = input ("Nombre nuevo de la categoría: ")
+		level = int (input ("Ingrese nivel: "))
+		e.renameCategory (cat, newCat, level)
 	elif i == 6:
-		cat = input("Nombre de la categoría: ")
-		dif = int (input ("dificultad: "))
-		print (e.wordsByCategoryNameDifficulty(cat, dif))
+		cat = input("Nombre de la categoría que desea eliminar: ")
+		level = int (input ("Ingrese nivel: "))
+		e.removeCategory (cat, level)
 	elif i == 7:
-		cat = input("Nombre de la categoría: ")
-		dif = int (input ("Nivel: "))
-		print (e.wordByCategoryName(cat, dif))
-	elif i == 8:
-		cat = input("Nombre de la categoría: ")
-		word = input("Palabra: ")
-		dif = input ("nivel de dificultad: ")
-		e.addWord(cat,word, dif)
-	elif i == 9:
-		cat = input ("Nombre de la categoría")
-		name = input ("Nombre de la nueva Palabra: ")
-		dif = int (input ("nivel de dificultad: "))	
-		ana = input ("Anagramas de la Palabra: ")
-		l = []
-		while (ana != "0"):
-			#Verifico unicidad dentro de la lista:
-			if not (ana in l):
-				l.append(ana)
-			ana = input ("Anagramas de la Palabra: ")
-		desc = input ("Agregue una breve descripción del elemento a ingresar: ")
-		e.addInfo (cat, name, dif, l, desc)
-	elif i == 10:
-		cat = input("Nombre de la categoría: ")
-		word = input("Palabra a eliminar: ")
-		dif = int (input ("Nivel : "))
-		e.removeName(cat,word, dif)
-	elif i == 11:
 		pp = pprint.PrettyPrinter(depth=7)
 		pp.pprint(e.showFullData())
-	elif i == 12:
-		cat = input ("Ingrese categoría: ")
-		dif = int (input("dificultad: "))
-		ana = input ("Ingrese Anagrama: ")
-		name = input ("Ingrese el resultado del Anagrama: ")
-		e.addAnagram(cat,name, ana, dif)
-	elif i == 13:
-		cat = input ("Ingrese categoría: ")
-		dif = int (input("dificultad: "))
-		e.addLevel (dif, cat)
-	elif i == 14:
-		cat = input("Nombre de la categoría: ")
-		dif = int (input ("Nivel de dificultad: "))
-		pal = input ("Palabra: ")
-		print (e.description(cat, pal, dif))
-	elif i == 15:
-		cat = input("Nombre de la categoría: ")
-		dif = int (input ("Nivel de dificultad: "))
-		pal = input ("Nombre de la palabra del anagrama a modificar: ")
-		ana = input ("Nombre del anagrama a modificar: ")
-		newAna = input ("Nombre nuevo: ")
-		renameAnagram (self, cat, pal, ana, dif, newAna)
-	elif i == 16:
-		cat = input("Nombre de la categoría: ")
-		dif = int (input ("Nivel de dificultad: "))
-		pal = input ("Nombre de la palabra del anagrama a eliminar: ")
-		ana = input ("Nombre del anagrama a eliminar: ")
-		removeAnagram (self, cat, pal, ana, dif)
+	elif i == 8:
+		ini = int (input("Ingrese nivel de comienzo: "))
+		fin = int (input("Ingrese nivel de fin: "))
+		for i in range (ini, fin + 1):
+			e.addLevel(i)
 	elif i == 0:
 		pass
 	else:
 		print("La opción ingresada no es válida")
-
-	"""elif i == 9:
-		cat = input("Nombre de la categoría: ")
-		word = input("Palabra a modificar: ")
-		newWord = input("Palabra a agregar: ")
-	e.renameWord(cat,word,newWord)"""
 
 exit()

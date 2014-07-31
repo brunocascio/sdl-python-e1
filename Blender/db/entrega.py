@@ -117,7 +117,7 @@ class Entrega ():
 				self.dictData["datos"][level].pop(category.lower())
 			self.__save()
 		except KeyError:
-			print ("La palabra ingresada no existe.")
+			print ("La palabra ingresada no existe en la categoría ingresada.")
 		except ValueError:
 			print ("La palabra ingresada no existe en la categoría " + category + " en el nivel " + level + ".")
 		
@@ -142,15 +142,18 @@ class Entrega ():
 			print ("La palabra buscada no existe en la categoría " + category + ".")
 
 
-	def addWord (self, level, category, descr):
+	def addWord (self, level, category, name, descr):
 		"""
 			Crea una nueva palabra en la escructura de datos.
 			Args:
 				level: nivel donde se agregará palabra.
 				category: categoría donde se guardará la palabra ingresada (si no existe, se crea).
+				name: palabra.
 				descr: breve descripción de la palabra ingresada.
 		"""
-		self.dictData["datos"][level][category.lower()] = descr
+		if not (category.lower() in self.dictData["datos"][level]):
+			self.dictData["datos"][level][category.lower()] = {}
+		self.dictData["datos"][level][category.lower()][name.lower()] = descr	
 		self.__save()
 		
 
@@ -163,16 +166,17 @@ class Entrega ():
 		"""
 			- Retorna una estructura con la categoria de la palabra, la palabra en si y su descripción, de forma aleatoria, de un nivel dado (1..5).
 			Ejemplo -> {category:'peces',value:'tiburon',descripcion:"es carnívoro"}
-			- Una excepción ocurre si el nivel se encuentra fuera del rango.
+			- Una excepción ocurre si el nivel se encuentra fuera del rango o el nivel está vacío (no puede seguir jugando).
 			Returns:
 				diccionario.
 		"""
-		l = list (self.dictData["datos"][level].keys()))
+		l = list (self.dictData["datos"][level].keys())
 		if (len (l) != 0):
 			cat = l[random.randint (0, len (l) -1 )]
-			#Lista de diccionarios palabras, descripcion
-			l2 = self.dictData["datos"][level][cat]
-			return ({cat: l2[random.randint (0, len(l2) -1 )]})
+			#
+			l2 = list (self.dictData["datos"][level][cat].keys())
+			nombre = l2[random.randint(0, len (l2) -1)]
+			return ({cat: { nombre : self.dictData["datos"][level][cat][nombre]}})
 		else:
 			raise ValueError ("No data.")
 		
