@@ -1,4 +1,5 @@
 import entrega
+import pprint
 
 e = entrega.Entrega("datos")
 
@@ -95,7 +96,8 @@ while i != 0:
 		dif = int (input ("Nivel : "))
 		e.removeName(cat,word, dif)
 	elif i == 11:
-		print (e.pruebas())
+		pp = pprint.PrettyPrinter(depth=7)
+		pp.pprint(e.showFullData())
 	elif i == 12:
 		cat = input ("Ingrese categoría: ")
 		dif = int (input("dificultad: "))

@@ -3,6 +3,7 @@
 import random
 import pickle
 import os
+import pprint
 
 class Entrega ():	
 	
@@ -42,7 +43,7 @@ class Entrega ():
 		fo.close()
 
 
-	def pruebas (self):
+	def showFullData (self):
 		return self.dictData
 
 
@@ -50,43 +51,31 @@ class Entrega ():
 		OPERACIONES CON CATEGORÍAS
 	"""
 
-	def categories(self):
-		"""Retorna una lista con todas las categorias ordenadas alfabeticamente"""
-		return (sorted(self.dictData["datos"].keys()))
 
-	
-	def addCategory(self, category):
-		"""Agrega una nueva categoria
+	def removeCategory(self, category, level):
+		"""Remueve una nueva categoria junto a toda su información.
 		    Args:
 		        category: El nombre de la categoría
-		    Returns: None"""
-		if (category in self.dictData["datos"]):
-			print ("La categoría ingresada ya existe.")
-		else:
-			self.dictData["datos"][category] = {}
-			self.__save()
-
-
-	def removeCategory(self, category):
-		"""Remueve una nueva categoria
-		    Args:
-		        category: El nombre de la categoría
-		    Returns: None"""
+		        level: nivel donde se elimina categoría.
+		    Returns: None
+		 """
 		try:
-			self.dictData["datos"].pop(category)
+			self.dictData["datos"][level].pop(category.lower())
 			self.__save()
 		except KeyError:
 			print ("La categoría ingresada no existe.")
 
 
-	def renameCategory(self, category, newCategory):
+	def renameCategory(self, category, newCategory, level):
 		"""Renombra una categoria
 		    Args:
-		        category: El nombre de la categoría a renombrar
-		        newCategory: El nuevo nombre de la categoría
-		    Returns: None"""
+		        category: El nombre de la categoría a renombrar.
+		        newCategory: El nuevo nombre de la categoría.
+		        level: nivel donde se encuentra la categoría a eliminar.
+		    Returns: None
+		"""
 		try:
-			self.dictData["datos"][newCategory] = self.dictData.pop(category)
+			self.dictData["datos"][level][newCategory.lower()] = self.dictData["datos"][level].pop(category.lower())
 			self.__save()
 		except KeyError:
 			print ("La categoría ingresada no existe.")
@@ -97,62 +86,35 @@ class Entrega ():
 	"""
 	
 
-	def addLevel (self, level, category):
-		"""Agrega un nuevo nivel a la categoría ingresada.
+	def addLevel (self, level):
+		"""Agrega un nuevo nivel a la información del diccionario.
 			Args:
 				level: tipo entero, representa al nuevo nivel.
-				category: categoría a la cual se agrega nivel
 		"""
-		try:
-			"""Obtengo el diccionario de determinada categoría"""
-			dictCat =self.dictData["datos"][category]
-			if (level in dictCat):
-				print ("El nivel ya existe en la categoría " + category + ".")
-			else:
-				dictCat[level] = {}
-				self.__save()
-		except KeyError:
-			print ("La categoría ingresada no existe.")
-
+		dictDatos = self.dictData["datos"]
+		#Me aseguro de no sobreescribir si ya existe en el diccionario la clave "level", sino no hago nada:
+		if not (level in dictDatos):
+			dictDatos[level] = {}
+			self.__save()
+		
 
 	"""
-		OPERACIONES CON NOMBRES (DADOS UNA CATEGORÍA Y UN NIVEL ESPECÍFICOS)
+		OPERACIONES CON NOMBRES
 	"""
+	
 
-
-	def wordsByCategoryNameDifficulty(self, category, level):
-		"""
-			Retorna todas las palabras de una categoria en un determinado nivel de dificultad:
-			Returns: list.
-		"""
-		try:
-			return (sorted (self.dictData["datos"][category][level].keys()))
-		except KeyError:
-			print ("La categoría ingresada no existe.")
-
-
-	def wordByCategoryName(self, category, level):
-		"""
-			Retorna una palabra aleatoria de una categoria en un determinado nivel.
-			Returns: string.
-		"""
-		try:
-			l = sorted (self.dictData["datos"][category][level].keys())
-			index = random.randint(1, len(l)) -1
-			return (l[index])
-		except KeyError:
-			print ("La categoría ingresada no existe.")		
-
-
-	def removeName(self,category, name, level):
-		"""Remueve una palabra de una determinada categoria en un determinado nivel junto a toda su información:
+	def removeWord(self,category, name, level):
+		"""Remueve una palabra de una determinada categoria en un determinado nivel junto a toda su información, si categoría queda vacía se elimina de determinado nivel:
 		    Args:
 		        category: Categoria de la palabra
 		        name: Palabra a eliminar
 		        level: nivel de dificultad
 		    Returns: None"""
 		try:
-			self.dictData["datos"][category][level].pop(name)
+			self.dictData["datos"][level][category.lower()].pop(name)
+			#Si no queda elemento en diccionario de categoría, la elimino del nivel:
+			if (len (self.dictData["datos"][level][category.lower()]) == 0):
+				self.dictData["datos"][level].pop(category.lower())
 			self.__save()
 		except KeyError:
 			print ("La palabra ingresada no existe.")
@@ -162,158 +124,58 @@ class Entrega ():
 
 	def renameWord(self, category, name, newName, level):
 		"""
-			Renombra una palabra de una determinada categoria
+			Renombra una palabra de una determinada categoria en un nivel dado.
 		    Args:
 		        category: Categoria de la palabra
 		        word: Palabra a modificar
 		        newWord: NuevaPalabra
-		    Returns: None
+		        level: nivel.
+		    Returns:
+				None
 		"""
 		try:
-			self.dictData["datos"][category][level][newName] = self.dictData["datos"][category][level].pop(name)
+			self.dictData["datos"][level][category.lower()][newName] = self.dictData["datos"][level][category.lower()].pop(name)
 			self.__save()
 		except KeyError:
 			print ("La categoría ingresada no existe.")
 		except ValueError:
 			print ("La palabra buscada no existe en la categoría " + category + ".")
 
-	#Verificar unicidad dentro de la lista result antes de enviarla.
-	def addInfo (self, category, name, level, result, description):
-		"""Agrega información al archivo:
-			Args: 
-				category: nombre de la categoría
-				level: nivel de dificultad
-				name: nombre de la nueva palabra 
-				result: lista con los posibles anagramas
-				description: breve descripción del elemento agregado.
-		"""
-		try:
-			dictCat= self.dictData["datos"][category]
-			try:
-				dictNames = dictCat[level]
-				if (name in dictNames):
-					print ("El nombre ingresado ya existe.")
-				else:
-					nombre = {}
-					nombre["res"] = result
-					nombre["descr"] = description
-					dictNames[name] = nombre
-					self.__save()
-			except KeyError:
-				print ("El nivel de dificultad ingresado no existe.")
-		except KeyError:
-			print ("La categoría ingresada no existe.")
 
+	def addWord (self, level, category, descr):
+		"""
+			Crea una nueva palabra en la escructura de datos.
+			Args:
+				level: nivel donde se agregará palabra.
+				category: categoría donde se guardará la palabra ingresada (si no existe, se crea).
+				descr: breve descripción de la palabra ingresada.
+		"""
+		self.dictData["datos"][level][category.lower()] = descr
+		self.__save()
+		
 
 	"""
 		OPERACIONES CON ANAGRAMAS (NOMBRE, CATEGORÍA Y NIVEL CONOCIDOS)
 	"""
 
 
-	
-	def addAnagram(self,category,name, ana, difficulty):
+	def getWord (self, level):
 		"""
-		Agrega un anagrama a una determinada categoria en una determinada dificultad de name:
-		    Args:
-		        category: Categoria a la cual se le asignará la palabra
-		        ana: Palabra a agregar
-		        name: palabra a la cual se agrega el anagrama
-		        difficulty : nivel en el cual se agrega palabra
-		    Returns: None
-		"""
-		try:
-			#Antes de agregar anagrama, verifico unicidad.
-			if not (ana in self.dictData["datos"][category][difficulty][name]["res"]):
-				self.dictData["datos"][category][difficulty][name]["res"].append(ana)
-				self.__save()
-			else:
-				print ("La palabra ingresada ya se encuentra en la lista de anagramas de " + name + ".")
-		except KeyError:
-			print ("La categoría ingresada no existe.")
-
-
-	def renameAnagram (self, category, name, ana, level, newAna):
-		"""
-			Renombra un anagrama de la lista del nombre ingresado.
-			Args:
-				category: categoría donde se halla el anagrama.
-				name: nombre al cual corresponde el anagrama.
-				ana: palabra a modificar
-				newAna: nombre nuevo.
+			- Retorna una estructura con la categoria de la palabra, la palabra en si y su descripción, de forma aleatoria, de un nivel dado (1..5).
+			Ejemplo -> {category:'peces',value:'tiburon',descripcion:"es carnívoro"}
+			- Una excepción ocurre si el nivel se encuentra fuera del rango.
 			Returns:
-				None
+				diccionario.
 		"""
-		try:
-			l = self.dictData["datos"][category][level][name]["res"]
-			if (ana in l):
-				l.remove (ana)
-				#Si el nuevo anagrama no estaba en la lista, lo agrego.
-				if not (newAna in l):
-					l.append (newAna)
-		except KeyError:
-			print ("Error de clave.")
-
-
-	def removeAnagram (self, category, name, ana, level):
-		"""
-			Remueve un determinado anagrama de la lista del nombre ingresado.
-			Args:
-				category: categoría.
-				name: nombre donde se busca anagrama.
-				ana: anagrama a eliminar de la lista de nombres.
-				level: nivel de dificultad donde se encuentra el nombre.
-			Returns:
-				None.
-		"""
-		try:
-			#Obtengo la lista de anagramas
-			l = self.dictData["datos"][category][level][name]["res"]
-			if (ana in l):
-				l.remove (ana)
-		except KeyError:
-			print ("Error de claves.")
-			
-
-	def anagrams (self, category, name, level):
-		"""
-			Retorna una lista de anagramas para determinada palabra.
-			Args:
-				category: nombre de categoría donde se encuentra palabra.
-				name: nombre de la palabra de la cual se obtiene lista.
-				level: nivel de dificultad
-			Returns:
-				Retorna lista de strings.
-		"""
-		try:
-			return (self.dictData["datos"][category][level][name]["res"])
-		except KeyError:
-			print ("Tratar error de cada clave (category, difficulty y name) por separado.")
-
-
-	def description (self, category, name, level):
-		"""
-			Retorna la descripción de una palabra en determinada categoría de determinado nivel de dificultad.
-			Returns: string.
-		"""
-		try:
-			return (self.dictData["datos"][category][level][name]["descr"])
-		except KeyError:
-			print ("Error de claves.")
-
-	
-	def infoCategoryLevelName (self, category, level, name):
-		"""Retorna la información (lista de anagrama, descripción) referente a un nombre dado, nivel y categoría en un diccionario
-			Returns:
-				dict de dict.:
-					"res" : lista de anagramas
-					"descr" : descripcion.
-		"""
-		try:
-			return self.dictData["datos"][category][level][name]
-		except KeyError:
-			#Debería tratar las claves por separado:
-			print ("Error de claves.")
-
+		l = list (self.dictData["datos"][level].keys()))
+		if (len (l) != 0):
+			cat = l[random.randint (0, len (l) -1 )]
+			#Lista de diccionarios palabras, descripcion
+			l2 = self.dictData["datos"][level][cat]
+			return ({cat: l2[random.randint (0, len(l2) -1 )]})
+		else:
+			raise ValueError ("No data.")
+		
 
 	"""
 		OPERACIONES CON CONFIGURACIÓN.
