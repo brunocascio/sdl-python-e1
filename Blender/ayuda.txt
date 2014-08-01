@@ -1,4 +1,6 @@
-Primera linea de ayuda.
-Segunda línea de ayuda.
-Tercera línea de ayuda.
-Cuarta línea de la ayuda.
+*Presione "F2" para una descripción
+breve de la palabra actual.
+*Para lanzar cubo en puerta, 
+presione tecla "D".
+*Para soltar cubo, presione tecla "Space".
+*Para ayuda presione tecla "F1".
