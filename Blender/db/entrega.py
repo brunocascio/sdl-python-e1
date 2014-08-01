@@ -201,7 +201,7 @@ class Entrega ():
 	"""
 
 	def testData(self):
-		self.dictData = {
+		self.dictData["datos"] = {
 	        1: {'animales':{
 	                        'perro': 'Mejor amigo del hombre',
 	                        'gato' : 'Les gusta dormir'
