@@ -1,6 +1,5 @@
 import entrega
 import pprint
-from CustomExceptions import LengthException
 
 e = entrega.Entrega("datos")
 

@@ -4,7 +4,6 @@ import random
 import pickle
 import os
 import pprint
-from CustomExceptions import LengthException
 
 class Entrega ():	
 
