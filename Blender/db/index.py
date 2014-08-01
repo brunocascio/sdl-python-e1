@@ -13,6 +13,7 @@ def showMenu ():
 	print ("6. Remover categoría.")
 	print ("7. Mostrar todos los datos.")
 	print ("8. Crear niveles.")
+	print ("9. Crear datos de prueba.")
 	#print ("8. Mostrar estado de juego.")
 	print()
 	print ("0. 	Salir")
@@ -67,6 +68,8 @@ while i != 0:
 		fin = int (input("Ingrese nivel de fin: "))
 		for i in range (ini, fin + 1):
 			e.addLevel(i)
+	elif i == 9:
+        	e.testData()
 	elif i == 0:
 		pass
 	else:

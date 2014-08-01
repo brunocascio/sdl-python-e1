@@ -6,8 +6,8 @@ import os
 import pprint
 
 class Entrega ():	
-	
-	
+
+
 	def __init__(self, filename="datos"):
 		self.path = os.path.dirname(os.path.abspath(__file__))
 		try:
@@ -84,7 +84,7 @@ class Entrega ():
 	"""
 		OPERACIONES CON NIVELES.
 	"""
-	
+
 
 	def addLevel (self, level):
 		"""Agrega un nuevo nivel a la información del diccionario.
@@ -101,7 +101,7 @@ class Entrega ():
 	"""
 		OPERACIONES CON NOMBRES
 	"""
-	
+
 
 	def removeWord(self,category, name, level):
 		"""Remueve una palabra de una determinada categoria en un determinado nivel junto a toda su información, si categoría queda vacía se elimina de determinado nivel:
@@ -196,5 +196,89 @@ class Entrega ():
 			print("Número de nivel inválido")
 
 
+	"""
+	    OPERACIONES AUTOMÁTICAS
+	"""
 
-	
+	def testData(self):
+		self.dictData = {
+	        1: {'animales':{
+	                        'perro': 'Mejor amigo del hombre',
+	                        'gato' : 'Les gusta dormir'
+	                       },
+	            'utiles':{
+	                      'lapicera': 'Existen de varios colores, por lo general, azules',
+	                      'lapiz'   : 'Se usa para dibujar',
+	                      'goma'    : 'Se usa para borrar'  
+	                     },
+	            'flores':{
+	                      'rosa': 'Su nombre es el mismo que un color'
+	                     },
+	            'frutas':{
+	                      'banana' : 'Alimento preferido de los monos',
+	                      'naranja': 'Tiene el mismo nombre que un color',
+	                      'limon'  : 'De color amarillo'
+	                     }
+	           },
+	        2: {
+	            'verduras':{
+	                      'tomate'   : 'Es de color rojo',
+	                      'zanahoria': 'Comida preferida de los conejos',
+	                      'lechuga'  : 'Comida preferida de las tortugas'
+	                     },
+	            'peces': {
+	                      'tiburon': 'Es carnívoro',
+	                      'ballena': 'Es muy grande',
+	                      'payaso' : 'El pez de buscando a Nemo era un pez ...... '
+	                     },
+	            'transporte':{
+	                          'auto': 'Tiene 4 ruedas',
+	                          'colectivo': 'Puede llevar a muchas personas'
+	                         }
+	           },
+	        3: {
+	            'verduras':{
+	                      'tomate'   : 'Es de color rojo',
+	                      'zanahoria': 'Comida preferida de los conejos',
+	                      'lechuga'  : 'Comida preferida de las tortugas'
+	                     },
+	            'peces': {
+	                      'tiburon': 'Es carnívoro',
+	                      'ballena': 'Es muy grande',
+	                      'payaso' : 'El pez de buscando a Nemo era un pez ...... '
+	                     },
+	            'transporte':{
+	                          'bicicleta': 'Cuenta con 2 ruedas',
+	                          'motocicleta': 'Cuenta con 2 ruedas'
+	                         }
+	           },
+	        4: {
+	            'flores':{
+	                      'girasol': 'Sus semillas pueden comerse'
+	                     },
+	            'animales':{
+	                        'hipopotamo': 'Les gusta permanecer en el lodo',
+	                        'jirafa' : 'Tiene el cuello muy largo'
+	                       },
+	            'verduras':{
+	                      'morron': 'Es de color rojo o verde'
+	                     }
+	           },
+	        5: {
+	            'transporte':{
+	                          'camioneta': 'Son todo terreno',
+	                          'camion'   : 'Utilizados para transportar carga.',
+	                         },	
+	            'animales':{
+	                        'cocodrilo': 'De color verde. ¡No lo hagas enojar!',
+	                        'tigre'    : 'Tiene muchas manchas'
+	                       },
+	            'verduras':{
+	                      'morron': 'Es de color rojo o verde'
+	                     },
+	            'plantas':{
+	                       'cactus': '¡OJO! Tiene espinas.'
+	                      }
+	           }
+	    }
+		self.__save()
