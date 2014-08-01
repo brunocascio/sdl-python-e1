@@ -73,7 +73,7 @@ while i != 0:
 		for i in range (ini, fin + 1):
 			e.addLevel(i)
 	elif i == 9:
-		print("Tener en cuenta que estos datos son puramente de prueba, por lo que no existen validaciones.\nSi desea datos validados, deber agregar de una palabra por vez (Opción 1)")
+		print("Tener en cuenta que estos datos son puramente de prueba, por lo que no existen validaciones.\nSi desea datos validados, deber agregar de una palabra por vez (Opción 1)\nEl fin de esta opción es demostrar el funcionamiento del juego.")
 		e.testData()
 	elif i == 10:
 		e.emptyData()
