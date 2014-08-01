@@ -4,6 +4,7 @@ import random
 import pickle
 import os
 import pprint
+from CustomExceptions import LengthException
 
 class Entrega ():	
 
@@ -153,6 +154,8 @@ class Entrega ():
 		"""
 		if not (category.lower() in self.dictData["datos"][level]):
 			self.dictData["datos"][level][category.lower()] = {}
+		if len(name) != (4 + level-1):
+			raise Exception("Para el nivel "+str(level)+" debe ingresar una palabra de "+str(4+level-1)+" letras")
 		self.dictData["datos"][level][category.lower()][name.lower()] = descr	
 		self.__save()
 		

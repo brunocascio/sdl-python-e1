@@ -1,5 +1,6 @@
 import entrega
 import pprint
+from CustomExceptions import LengthException
 
 e = entrega.Entrega("datos")
 
@@ -36,7 +37,10 @@ while i != 0:
 		cat = input ("Ingrese una categoría: ")
 		desc = input ("Ingrese una descripción de la palabra: ")
 		level = int (input ("Ingrese el nivel: "))
-		e.addWord (level, cat, pal, desc)
+		try:
+			e.addWord (level, cat, pal, desc)
+		except Exception as e:
+			print(e)
 	elif i == 2:
 		cat = input("Nombre de la categoría: ")
 		name = input ("Ingrese el nombre que quiere modificar: ")
