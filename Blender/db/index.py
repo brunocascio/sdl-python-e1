@@ -5,15 +5,16 @@ e = entrega.Entrega("datos")
 
 def showMenu ():
 	print()
-	print ("1. Agregar palabra.")
-	print ("2. Modificar palabra.")
-	print ("3. Eliminar palabra. ")
-	print ("4. Obtener diccionario palabra. (?)")
-	print ("5. Renombrar categoría.")
-	print ("6. Remover categoría.")
-	print ("7. Mostrar todos los datos.")
-	print ("8. Crear niveles.")
-	print ("9. Crear datos de prueba.")
+	print ("1.  Agregar palabra.")
+	print ("2.  Modificar palabra.")
+	print ("3.  Eliminar palabra. ")
+	print ("4.  Obtener diccionario palabra. (?)")
+	print ("5.  Renombrar categoría.")
+	print ("6.  Remover categoría.")
+	print ("7.  Mostrar todos los datos.")
+	print ("8.  Crear niveles.")
+	print ("9.  Crear datos de prueba.")
+	print ("10. Vaciar Archivo de Datos.")
 	#print ("8. Mostrar estado de juego.")
 	print()
 	print ("0. 	Salir")
@@ -72,7 +73,10 @@ while i != 0:
 		for i in range (ini, fin + 1):
 			e.addLevel(i)
 	elif i == 9:
-        	e.testData()
+		print("Tener en cuenta que estos datos son puramente de prueba, por lo que no existen validaciones.\nSi desea datos validados, deber agregar de una palabra por vez (Opción 1)")
+		e.testData()
+	elif i == 10:
+		e.emptyData()
 	elif i == 0:
 		pass
 	else:
