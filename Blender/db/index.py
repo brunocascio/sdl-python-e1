@@ -15,6 +15,8 @@ def showMenu ():
 	print ("8.  Crear niveles.")
 	print ("9.  Crear datos de prueba.")
 	print ("10. Vaciar Archivo de Datos.")
+	print ("11. Ver configuración de teclas.")
+	print ("12. Configuración de teclas.")
 	#print ("8. Mostrar estado de juego.")
 	print()
 	print ("0. 	Salir")
@@ -77,6 +79,23 @@ while i != 0:
 		e.testData()
 	elif i == 10:
 		e.emptyData()
+	elif i == 11:
+		pp = pprint.PrettyPrinter(depth=2)
+		pp.pprint(e.getTeclas())
+	elif i == 12:
+		dic    = e.getTeclas()
+		keys   = dic.keys()
+		
+		print("############## Valores por defecto #################:\n")
+		for k in keys:
+			print(k + ": " + chr(dic[k]) + "\n")
+		print("############## ################### #################:\n")	
+
+		for k in keys:
+			c = ord(input("Ingrese la configuración para la tecla '" + k + "': "))
+			dic[k] = c
+		e.setTeclas(dic)
+
 	elif i == 0:
 		pass
 	else:

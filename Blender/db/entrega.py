@@ -53,6 +53,11 @@ class Entrega ():
 		return self.dictData["globales"]["teclas"]
 
 
+	def setTeclas(self, dict):
+		self.dictData["globales"]["teclas"] = dict
+		self.__save()
+
+
 	def __save(self):
 		"""Persiste la información"""
 		fo = open(self.path, "wb")
