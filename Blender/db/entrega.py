@@ -49,6 +49,10 @@ class Entrega ():
 		self.dictData = {"config": config, "globales": { "teclas": teclas }, "datos":{}}
 
 
+	def getTeclas(self):
+		return self.dictData["globales"]["teclas"]
+
+
 	def __save(self):
 		"""Persiste la información"""
 		fo = open(self.path, "wb")
