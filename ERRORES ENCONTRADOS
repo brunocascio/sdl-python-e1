@@ -1,3 +1,4 @@
 - No existía la imagen chicken.png ( $NUESTRO_PROYECTO/Dave/Desktop/Desktop/monetext/mob/chicken.png )
 - No existía la imagen 1.png       ( $NUESTRO_PROYECTO/home/waterlava/lava/1.png )
-- No se pueden asignar multiples sensores, a 2 controladores de tipo módulo independientemente uno del otro. Funciona si se hace directamente desde la UI.
+- RARA VEZ, blender actúa de manera extraña. Por momentos no crea algún que otro cubo, o lanza una pantalla negra. Creemos que no es un problema de programación
+sino más bien algún bug de blender ya que no se muestra excepción alguna y el programa sigue en ejecución.
