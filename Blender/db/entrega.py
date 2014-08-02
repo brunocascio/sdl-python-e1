@@ -209,82 +209,113 @@ class Entrega ():
 	def testData(self):
 		self.dictData["datos"] = {
 	        1: {'animales':{
-	                        'perro': 'Mejor amigo del hombre',
-	                        'gato' : 'Les gusta dormir'
+	                        'gato' : 'Les gusta dormir',
+	                        'leon' :  'Es el rey de la selva',
+						    'rata' :  'Estan en la basura y tienen cola larga.',
+						    'pato' : 'Tienen un pico muy largo.'
 	                       },
 	            'utiles':{
-	                      'lapicera': 'Existen de varios colores, por lo general, azules',
-	                      'lapiz'   : 'Se usa para dibujar',
-	                      'goma'    : 'Se usa para borrar'  
+	                      'goma'   : 'Se usa para borrar'  
 	                     },
 	            'flores':{
-	                      'rosa': 'Su nombre es el mismo que un color'
+	                      'rosa'   : 'Su nombre es el mismo que un color'
 	                     },
 	            'frutas':{
-	                      'banana' : 'Alimento preferido de los monos',
-	                      'naranja': 'Tiene el mismo nombre que un color',
-	                      'limon'  : 'De color amarillo'
-	                     }
+	                      'pera'   : 'Es de color amarillo y jugosa'
+	                     },
+	             'verduras':{
+						     'papa': 'Se pueden cocinar fritas o hacer pure.'
+							},
+	            'transporte':{
+	                         'auto': 'Tiene 4 ruedas'
+	                         }
 	           },
 	        2: {
-	            'verduras':{
-	                      'tomate'   : 'Es de color rojo',
-	                      'zanahoria': 'Comida preferida de los conejos',
-	                      'lechuga'  : 'Comida preferida de las tortugas'
-	                     },
+	            'utiles':{
+	                      'lapiz'    : 'Se usa para escribir y dibujar',
+						 },
+	            'animales':{
+						  'perro': 'Mejor amigo del hombre',
+	                      'tigre': 'Tiene muchas manchas',
+	                      'raton': 'Le gusta el queso (no pone plata cuando hay que pagar)'
+						 },
 	            'peces': {
 	                      'tiburon': 'Es carnívoro',
 	                      'ballena': 'Es muy grande',
-	                      'payaso' : 'El pez de buscando a Nemo era un pez ...... '
 	                     },
-	            'transporte':{
-	                          'auto': 'Tiene 4 ruedas',
-	                          'colectivo': 'Puede llevar a muchas personas'
-	                         }
+	             'frutas':{
+	                      'limon'  : 'De color amarillo y acido.'
+						  },
+				 'transporte':{
+	                          'micro': 'Puede llevar a muchas personas.',
+	                          'avion': 'Vuela, transporta pasajeros.'
+				              }
 	           },
 	        3: {
 	            'verduras':{
-	                      'tomate'   : 'Es de color rojo',
-	                      'zanahoria': 'Comida preferida de los conejos',
-	                      'lechuga'  : 'Comida preferida de las tortugas'
+	                      'tomate': 'Es de color rojo',
+	                      'morron': 'Es de color rojo o verde',
+						  'pepino': 'Color verde y largo'
 	                     },
 	            'peces': {
-	                      'tiburon': 'Es carnívoro',
-	                      'ballena': 'Es muy grande',
-	                      'payaso' : 'El pez de buscando a Nemo era un pez ...... '
+	                      'payaso' : 'El pez de buscando a Nemo era un pez ...... ',
+	                      'espada' : 'Tiene nariz larga y puntiaguda, es un pez......',
+						  'anchoa' : 'Se puede poner sobre la pizza.'
 	                     },
 	            'transporte':{
-	                          'bicicleta': 'Cuenta con 2 ruedas',
-	                          'motocicleta': 'Cuenta con 2 ruedas'
-	                         }
+	                          'camion': 'Utilizados para transportar carga.'
+	                         },
+	            'plantas':{
+	                       'cactus': '¡OJO! Tiene espinas.'
+	                      },
+	             'frutas':{
+	                      'banana' : 'Alimento preferido de los monos',
+	                      'sandia' : 'Verde por fuera, rojo por dentro',
+	                      'pomelo' : 'Es muy ácido, pero rico; algunos son rosados por dentro.',
+	                      'cereza' : 'De color roja, se le ponen a los postres.'
+						  },
+				'animales':{
+	                      'jirafa' : 'Tiene el cuello muy largo y come hojas.'
+						   }
 	           },
 	        4: {
 	            'flores':{
-	                      'girasol': 'Sus semillas pueden comerse'
+	                      'girasol'  : 'Sus semillas pueden comerse'
 	                     },
 	            'animales':{
-	                        'hipopotamo': 'Les gusta permanecer en el lodo',
-	                        'jirafa' : 'Tiene el cuello muy largo'
+	                      'tortuga'  : 'Es un animal muy lento.'
 	                       },
 	            'verduras':{
-	                      'morron': 'Es de color rojo o verde'
-	                     }
+	                      'lechuga'  : 'Comida preferida de las tortugas',
+	                      'cebolla'  :  'Hace llorar a quien la corta.'
+	                     },
+	             'peces' :{
+	                      'tiburon'  : 'Es carnívoro',
+	                      'ballena'  : 'Es muy grande'
+						  },
+				 'frutas':{
+	                      'naranja'  : 'Tiene el mismo nombre que un color',
+	                      'manzana'  : 'Pueden ser de color verde o rojas.'
+						  }
 	           },
 	        5: {
+				'utiles'    :{
+							  'lapicera' : 'Existen de varios colores, por lo general, azules',
+							 },
 	            'transporte':{
 	                          'camioneta': 'Son todo terreno',
-	                          'camion'   : 'Utilizados para transportar carga.',
+	                          'bicicleta': 'Cuenta con 2 ruedas',
+	                          'motocicleta': 'Cuenta con 2 ruedas y un motor'
 	                         },	
 	            'animales':{
-	                        'cocodrilo': 'De color verde. ¡No lo hagas enojar!',
-	                        'tigre'    : 'Tiene muchas manchas'
+	                        'hipopotamo': 'Les gusta permanecer en el lodo',
+	                        'cocodrilo' : 'De color verde. ¡No lo hagas enojar!',
+	                        'camaleon'  : 'Puede cambiar de color.'
 	                       },
 	            'verduras':{
-	                      'morron': 'Es de color rojo o verde'
-	                     },
-	            'plantas':{
-	                       'cactus': '¡OJO! Tiene espinas.'
-	                      }
+	                        'berenjena': 'Es de color violeta.',
+							'zanahoria': 'Comida preferida de los conejos'
+	                       }
 	           }
 	    }
 		self.__save()
