@@ -22,18 +22,31 @@ class Entrega ():
 
 
 	def __inicializarDatos (self):
-		config = {  1:{"coord":
-						{"camara":0.28068, "personaje":-23.56558}},
-					2:{"coord":
-						{"camara":73.81065, "personaje":49.96439}},
-					3:{"coord":
-						{"camara": 130.39062, "personaje": 106.54436}},
-					4:{"coord":
-						{"camara": 192.06549, "personaje": 168.21923}},
-					5:{"coord":
-						{"camara": 258.99521, "personaje": 235.14895}}}
+		config = {  
+			1:{"coord":
+				{"camara":0.28068, "personaje":-23.56558}},
+			2:{"coord":
+				{"camara":73.81065, "personaje":49.96439}},
+			3:{"coord":
+				{"camara": 130.39062, "personaje": 106.54436}},
+			4:{"coord":
+				{"camara": 192.06549, "personaje": 168.21923}},
+			5:{"coord":
+				{"camara": 258.99521, "personaje": 235.14895}}
+		}
 
-		self.dictData = {"datos":{}, "config": config}
+		teclas = {
+			"arriba"		: 146,
+			"abajo"			: 144,
+			"izquierda"		: 143,
+			"derecha"		: 145,
+			"lanzar"		: 100,
+			"soltar"		: 32,
+			"ayuda_juego"	: 162,
+			"ayuda_palabra"	: 163
+		}
+
+		self.dictData = {"config": config, "globales": { "teclas": teclas }, "datos":{}}
 
 
 	def __save(self):

@@ -1,4 +1,4 @@
 - No existía la imagen chicken.png ( $NUESTRO_PROYECTO/Dave/Desktop/Desktop/monetext/mob/chicken.png )
 - No existía la imagen 1.png       ( $NUESTRO_PROYECTO/home/waterlava/lava/1.png )
-- RARA VEZ, blender actúa de manera extraña. Por momentos no crea algún que otro cubo, o lanza una pantalla negra. Creemos que no es un problema de programación
-sino más bien algún bug de blender ya que no se muestra excepción alguna y el programa sigue en ejecución.
+- Por momentos blender no responde, si ocurren 2 eventos al mismo tiempo (por ejemplo soltar un cubo y juntar otro al mismo tiempo) a veces
+uno queda emparentado (o parece estarlo) sin podes accionar sobre ese cubo.
