@@ -224,7 +224,7 @@ class Entrega ():
 	    OPERACIONES AUTOMÁTICAS
 	"""
 
-	def emptyData(self):
+	def reinitialize(self):
 		self.__inicializarDatos()
 		self.__save()
 

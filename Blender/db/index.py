@@ -14,7 +14,7 @@ def showMenu ():
 	print ("7.  Mostrar todos los datos.")
 	print ("8.  Crear niveles.")
 	print ("9.  Crear datos de prueba.")
-	print ("10. Vaciar Archivo de Datos.")
+	print ("10. Reinicializar Archivo (Sin datos de prueba).")
 	print ("11. Ver configuración de teclas.")
 	print ("12. Configuración de teclas.")
 	#print ("8. Mostrar estado de juego.")
@@ -78,7 +78,7 @@ while i != 0:
 		print("Tener en cuenta que estos datos son puramente de prueba, por lo que no existen validaciones.\nSi desea datos validados, deber agregar de una palabra por vez (Opción 1)\nEl fin de esta opción es demostrar el funcionamiento del juego.")
 		e.testData()
 	elif i == 10:
-		e.emptyData()
+		e.reinitialize()
 	elif i == 11:
 		pp = pprint.PrettyPrinter(depth=2)
 		pp.pprint(e.getTeclas())
@@ -87,7 +87,12 @@ while i != 0:
 		keys   = dic.keys()
 
 		DICTIONARY = {
-			"FLECHA_IZQ": 143
+			"FLECHA_IZQ": 143,
+			"FLECHA_DER": 145,
+			"FLECHA_ARR": 146,
+			"FLECHA_ABA": 144,
+			"F1" 		: 162,
+			"F2"		: 163
 		}
 
 		
@@ -104,9 +109,25 @@ while i != 0:
 			c = input("Ingrese la configuración para la tecla '" + k + "': ")
 			if c.upper() == 'FLECHA_IZQ':
 				c = DICTIONARY['FLECHA_IZQ']
+			elif c.upper() == 'FLECHA_DER':
+				c = DICTIONARY ['FLECHA_DER']
+			elif c.upper() == 'FLECHA_ARR':
+				c = DICTIONARY ['FLECHA_ARR']
+			elif c.upper() == 'FLECHA_ABA':
+				c = DICTIONARY ['FLECHA_ABA']
+			elif c.upper () == 'F1':
+				c = DICTIONARY ['F1']
+			elif c.upper () == 'F2':
+				c = DICTIONARY ['F2']
+			if isinstance(c, str):
+				try:
+					c = ord(c)
+					dic[k] = c
+				except TypeError:
+					print('Entrada no válida.')
+					exit()
 			else:
-				c = ord(c)
-			dic[k] = c
+				dic[k] = c
 		e.setTeclas(dic)
 
 	elif i == 0:
