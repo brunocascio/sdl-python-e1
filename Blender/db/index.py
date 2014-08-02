@@ -85,6 +85,11 @@ while i != 0:
 	elif i == 12:
 		dic    = e.getTeclas()
 		keys   = dic.keys()
+
+		DICTIONARY = {
+			"FLECHA_IZQ": 143
+		}
+
 		
 		print("############## Valores por defecto #################:\n")
 		for k in keys:
@@ -92,7 +97,15 @@ while i != 0:
 		print("############## ################### #################:\n")	
 
 		for k in keys:
-			c = ord(input("Ingrese la configuración para la tecla '" + k + "': "))
+			print("Para teclas especiales: ")
+			for t in DICTIONARY.keys():
+				print("'"+t+"' ( Entre comillas )")
+
+			c = input("Ingrese la configuración para la tecla '" + k + "': ")
+			if c.upper() == 'FLECHA_IZQ':
+				c = DICTIONARY['FLECHA_IZQ']
+			else:
+				c = ord(c)
 			dic[k] = c
 		e.setTeclas(dic)
 
