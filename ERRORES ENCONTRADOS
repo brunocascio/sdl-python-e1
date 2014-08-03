@@ -2,3 +2,7 @@
 - No existía la imagen 1.png       ( $NUESTRO_PROYECTO/home/waterlava/lava/1.png )
 - Por momentos blender no responde, si ocurren 2 eventos al mismo tiempo (por ejemplo soltar un cubo y juntar otro al mismo tiempo) a veces
 uno queda emparentado (o parece estarlo) sin podes accionar sobre ese cubo.
+- El objecto "c" se encontraba corrupto, por alguna razón, el sensor colision no se llamaba igual
+que los demás sensores, y era imposible colocarle el mismo nombre. Parecía como si ya existia un sensor
+con ese nombre en ese cubo (colocaba colision.001). La solución fue borrarlo, y crearlo nuevamente,
+para esto, se duplica un cubo cualquiera, se reemplaza la textura y el nombre por "c" en este caso
