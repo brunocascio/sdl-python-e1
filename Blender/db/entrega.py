@@ -22,6 +22,7 @@ class Entrega ():
 
 
 	def __inicializarDatos (self):
+		"""Inicializa con valores por defecto al archivo"""
 		config = {  
 			1:{"coord":
 				{"camara":0.28068, "personaje":-23.56558}},
@@ -46,7 +47,7 @@ class Entrega ():
 			"ayuda_palabra"	: 163
 		}
 
-		self.dictData = {"config": config, "globales": { "teclas": teclas }, "datos":{}}
+		self.dictData = {"config": config, "globales": { "teclas": teclas }, "datos":{ 1:{},2:{},3:{},4:{},5:{} } }
 
 
 	def getTeclas(self):
@@ -81,11 +82,14 @@ class Entrega ():
 		        level: nivel donde se elimina categoría.
 		    Returns: None
 		 """
-		try:
-			self.dictData["datos"][level].pop(category.lower())
-			self.__save()
-		except KeyError:
-			print ("La categoría ingresada no existe.")
+		if level < 1 or level > 5:
+			raise Exception("Nivel fuera de rango. Ingrese un número dentro del rango 1..5")
+
+		if category.lower() not in self.dictData["datos"][level]:
+			raise KeyError("Categoría no existente")
+
+		self.dictData["datos"][level].pop(category.lower())
+		self.__save()
 
 
 	def renameCategory(self, category, newCategory, level):
@@ -96,28 +100,15 @@ class Entrega ():
 		        level: nivel donde se encuentra la categoría a eliminar.
 		    Returns: None
 		"""
-		try:
-			self.dictData["datos"][level][newCategory.lower()] = self.dictData["datos"][level].pop(category.lower())
-			self.__save()
-		except KeyError:
-			print ("La categoría ingresada no existe.")
+		if level < 1 or level > 5:
+			raise Exception("Nivel fuera de rango. Ingrese un número dentro del rango 1..5")
+			
+		if category.lower() not in self.dictData["datos"][level]:
+			raise KeyError("Categoría no existente")
 
+		self.dictData["datos"][level][newCategory.lower()] = self.dictData["datos"][level].pop(category.lower())
+		self.__save()
 
-	"""
-		OPERACIONES CON NIVELES.
-	"""
-
-
-	def addLevel (self, level):
-		"""Agrega un nuevo nivel a la información del diccionario.
-			Args:
-				level: tipo entero, representa al nuevo nivel.
-		"""
-		dictDatos = self.dictData["datos"]
-		#Me aseguro de no sobreescribir si ya existe en el diccionario la clave "level", sino no hago nada:
-		if not (level in dictDatos):
-			dictDatos[level] = {}
-			self.__save()
 		
 
 	"""
@@ -132,16 +123,20 @@ class Entrega ():
 		        name: Palabra a eliminar
 		        level: nivel de dificultad
 		    Returns: None"""
-		try:
-			self.dictData["datos"][level][category.lower()].pop(name)
-			#Si no queda elemento en diccionario de categoría, la elimino del nivel:
-			if (len (self.dictData["datos"][level][category.lower()]) == 0):
-				self.dictData["datos"][level].pop(category.lower())
-			self.__save()
-		except KeyError:
-			print ("La palabra ingresada no existe en la categoría ingresada.")
-		except ValueError:
-			print ("La palabra ingresada no existe en la categoría " + category + " en el nivel " + level + ".")
+		if level < 1 or level > 5:
+			raise Exception("Nivel fuera de rango. Ingrese un número dentro del rango 1..5")
+			
+		if category.lower() not in self.dictData["datos"][level]:
+			raise KeyError("La palabra ingresada no existe en la categoría ingresada.")
+
+		if name not in self.dictData["datos"][level][category.lower()]:
+			raise ValueError("La palabra ingresada no existe en la categoría " + category + " en el nivel " + level + ".")
+
+		self.dictData["datos"][level][category.lower()].pop(name)
+		#Si no queda elemento en diccionario de categoría, la elimino del nivel:
+		if (len (self.dictData["datos"][level][category.lower()]) == 0):
+			self.dictData["datos"][level].pop(category.lower())
+		self.__save()
 		
 
 	def renameWord(self, category, name, newName, level):
@@ -155,13 +150,20 @@ class Entrega ():
 		    Returns:
 				None
 		"""
-		try:
-			self.dictData["datos"][level][category.lower()][newName] = self.dictData["datos"][level][category.lower()].pop(name)
-			self.__save()
-		except KeyError:
-			print ("La categoría ingresada no existe.")
-		except ValueError:
-			print ("La palabra buscada no existe en la categoría " + category + ".")
+		if level < 1 or level > 5:
+			raise Exception("Nivel fuera de rango. Ingrese un número dentro del rango 1..5")
+
+		if category.lower() not in self.dictData["datos"][level]:
+			raise KeyError("Categoría no existente")
+
+		if name not in self.dictData["datos"][level][category.lower()]:
+			raise ValueError("Palabra no existente")
+
+		if len(name) != (4 + level-1):
+			raise Exception("Para el nivel "+str(level)+" debe ingresar una palabra de "+str(4+level-1)+" letras")
+
+		self.dictData["datos"][level][category.lower()][newName] = self.dictData["datos"][level][category.lower()].pop(name)
+		self.__save()
 
 
 	def addWord (self, level, category, name, descr):
@@ -173,10 +175,15 @@ class Entrega ():
 				name: palabra.
 				descr: breve descripción de la palabra ingresada.
 		"""
-		if not (category.lower() in self.dictData["datos"][level]):
-			self.dictData["datos"][level][category.lower()] = {}
+		if level < 1 or level > 5:
+			raise Exception("Nivel fuera de rango. Ingrese un número dentro del rango 1..5")
+
 		if len(name) != (4 + level-1):
 			raise Exception("Para el nivel "+str(level)+" debe ingresar una palabra de "+str(4+level-1)+" letras")
+
+		if not (category.lower() in self.dictData["datos"][level]):
+			self.dictData["datos"][level][category.lower()] = {}
+
 		self.dictData["datos"][level][category.lower()][name.lower()] = descr	
 		self.__save()
 		
@@ -194,7 +201,11 @@ class Entrega ():
 			Returns:
 				diccionario.
 		"""
+		if level < 1 or level > 5:
+			raise Exception("Nivel fuera de rango. Ingrese un número dentro del rango 1..5")
+
 		l = list (self.dictData["datos"][level].keys())
+
 		if (len (l) != 0):
 			cat = l[random.randint (0, len (l) -1 )]
 			#
@@ -214,10 +225,10 @@ class Entrega ():
 			Devuelve las coordenadas de determinado nivel de cámara y personaje.
 			Returns: dict.
 		"""
-		try: 
-			return (self.dictData["config"][level]["coord"])
-		except KeyError:
-			print("Número de nivel inválido")
+		if level < 1 or level > 5:
+			raise Exception("Nivel fuera de rango. Ingrese un número dentro del rango 1..5")
+		
+		return (self.dictData["config"][level]["coord"])
 
 
 	"""
@@ -229,6 +240,7 @@ class Entrega ():
 		self.__save()
 
 	def testData(self):
+		""" Crea datos de prueba para el juego """
 		self.dictData["datos"] = {
 	        1: {'animales':{
 	                        'gato' : 'Les gusta dormir',
