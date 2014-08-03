@@ -1,6 +1,6 @@
-*Presione "F2" para una descripción
+*Para ayuda presione tecla %s.
+*Presione %s para una descripción
 breve de la palabra actual.
 *Para lanzar cubo en puerta, 
-presione tecla "D".
-*Para soltar cubo, presione tecla "Space".
-*Para ayuda presione tecla "F1".
+presione tecla %s.
+*Para soltar cubo, presione tecla %s.
