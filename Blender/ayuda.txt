@@ -1,6 +1,12 @@
-*Para ayuda presione tecla %s.
-*Presione %s para una descripción
-breve de la palabra actual.
-*Para lanzar cubo en puerta, 
-presione tecla %s.
-*Para soltar cubo, presione tecla %s.
+Este juego consta de formar palabras según el anagrama dado. 
+Para ello, debe juntar cubos y arrojarlos a la puerta donde 
+se muestra la categoría de la palabra en juego.
+
+{0}: Ver ayuda del juego.
+{1}: Ver descripción del anagrama.
+{2}: Lanzar el cubo.
+{3}: Soltar el cubo.
+{4}: Moverse hacia atrás.
+{5}: Moverse hacia adelante.
+{6}: Moverse hacia la derecha.
+{7}: Moverse hacia la izquierda.
