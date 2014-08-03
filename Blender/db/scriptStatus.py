@@ -18,7 +18,10 @@ while (i !=0):
 	i = int (input ("Ingrese una opción: "))
 	if i == 1:
 		nivel = int (input ("Ingrese el nivel actual: "))
-		s.setNivelActual (nivel)
+		try:
+			s.setNivelActual (nivel)
+		except Exception as e:
+			print(e)
 	elif i == 9:
 		print (s.pruebas())
 	elif i == 0:

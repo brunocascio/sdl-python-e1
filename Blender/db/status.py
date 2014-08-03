@@ -67,6 +67,8 @@ class Status ():
 
 
 	def setNivelActual (self, nivelActual):
+		if ( nivelActual < 1 or nivelActual > 5):
+			raise Exception("El nivel está fuera de rango. (1..5)")
 		self.__dictData["info"]["nivelActual"] = nivelActual
 		self.__save()
 
